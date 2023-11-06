@@ -1,19 +1,41 @@
+:root{
+    --blue:#004D99;
+}
+
 *{
     box-sizing: border-box;
 }
 body{
-    position:relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     background: url(/src/background-img.jpg);
     background-size: cover;
+    background-position: center;
     margin:0;
     padding: 0;
 }
-/* #search-bar{
-    position: absolute;
-    top: 30%; 
-    left: 50%;
-    transform: translate(-50%, -50%); 
-   
-} */
+#form{
+    margin-top:200px;
+    width:30%;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    
+}
+#search-bar{
+    height:40px;
+    
+    background-color:rgb(48, 45, 45);
+    border-radius: 20px;
+    padding:10px;
+    font-size: 1em;
+}
+#search-btn{
+    width:fit-content;
+    font-size: 1.2em;
+    
+}
+
 
