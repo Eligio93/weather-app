@@ -4,6 +4,8 @@
 
 *{
     box-sizing: border-box;
+    padding:0;
+    margin:0;
 }
 body{
     display:flex;
@@ -36,6 +38,29 @@ body{
     width:fit-content;
     font-size: 1.2em;
     
+}
+#main{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+    color:white;
+}
+#location-info{
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+   
+}
+#city-name{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+#city-region{
+    font-size:25px;
+}
+#city-country{
+    font-size:20px;
 }
 
 
