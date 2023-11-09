@@ -10,49 +10,77 @@
 body{
     display:flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
     height: 100vh;
-    background: url(/src/background-img.jpg);
+    background: url(/src/background-img.jpg) ;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     margin:0;
     padding: 0;
 }
+
 #form{
-    margin-top:200px;
-    width:30%;
     display:flex;
     flex-direction: column;
-    gap:10px;
+    justify-content: center;
+    width:30%;    
+    background-color: rgba(10, 10, 39, 0.59);
+    height:100%;
+    padding:20px;
+   
     
 }
 #search-bar{
-    height:40px;
-    
-    background-color:rgb(48, 45, 45);
-    border-radius: 20px;
-    padding:10px;
-    font-size: 1em;
+     
+    background-color:transparent;
+    border:none;
+    color:white;
+    border-bottom:1px solid white;
+    padding:5px 0;
+    font-size: 20px;
+}
+#search-bar::placeholder{
+    color:grey;
+}
+#search-bar:focus-visible{
+ outline:none;
 }
 #search-btn{
     width:fit-content;
     font-size: 1.2em;
+    margin-top:20px;
     
 }
 #main{
     display:flex;
     justify-content: space-between;
     width: 100%;
+    height:fit-content;
     color:white;
 }
-#location-info{
+#location-info,#weather-info{
     padding:50px;
     display:flex;
     flex-direction:column;
    
 }
+#weather-info{
+   align-items: center;
+}
+#date{
+    font-size:20px;
+  
+    margin-top:30px;
+}
+#time{
+    font-size:15px;
+   
+    
+
+}
 #city-name{
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom:10px;
 }
@@ -62,5 +90,66 @@ body{
 #city-country{
     font-size:20px;
 }
+img{
+    height:64px;
+    width: 64px;
+    align-self: center;
+}
+.error{
+background:rgba(4, 3, 83, 0.5);
+font-size:20px;
+color:white;
+padding:10px;
+border-radius:10px;
+}
+#current-condition{
+    font-size: 40px;
+    font-weight: bold;
+    align-self: center;
+}
+#temp{
+    font-size: 40px;
+    font-weight: bold;
+}
+#feels-like{
+    font-size: 18px;;
+}
+#sunrise,#sunset{
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-start;
+    gap:10px;
+}
+#sunrise img, #sunset img{
+    height:30px;
+    width:30px;
+    justify-self: flex-start;
+    
+  
+}
+#sunrise-time,#sunset-time{
+    font-size: 18px;
+    align-self: center;
+}
+.side-element{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+.side-element img{
+    height:40px;
+    width:40px;
+}
+#forecast{
+    display:flex;
+    position:absolute;
+    border:1px solid white;
+    color:white;
+    bottom:0;
+    height:30%;
+    width:100%;   
+}
+
+
 
 
