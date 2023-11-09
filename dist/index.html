@@ -7,15 +7,60 @@
     <title>The Weather App</title>
 </head>
 <body>
+    <div id="new-search"></div>
+       
     <div id="main">
+        
         <div id="location-info">
             <p id="city-name">London</p>
             <p id="city-region">City of London, Greater London<p>
             <p id="city-country">United Kingdom</p>
+            <p id="date">Mon 22 Jan 2023</p>
+            <p id="time">22:10</p>
+            <p id="time-zone">Europe/London</p>
+            <div id="sunrise">
+                <img src="/src/sunrise.svg" alt="">
+                <p id="sunrise-time">Sun rises at 6.02 AM</p>
+            </div>
+            <div id="sunset">
+                <img src="/src/sunset.svg" alt="">
+                <p id="sunset-time">Sun sets at 20:00 PM</p>
+            </div>    
         </div>
+
         <div id="weather-info">
+            <p id="current-condition">Storm</p>
+            <img src="//cdn.weatherapi.com/weather/64x64/day/389.png" alt="" srcset="">                
+            <p id="temp">35 °C</p>
+            <div class="side-element">
+                <p id="feels-like">Feels like 50°C</p>
+                <img src="/src/feels-like.svg" alt="">
+                
+            </div>
+            
+            <p id="degrees">C° F°</p>   
         </div>
+     
+       
+     
     </div>
+    <!-- <div id="forecast">
+        <div class="forecast-box" id="forecast-1">
+            <p class="forecast-day" id="day1">MON</p>
+            <p>10°C - 35°C</p>
+        </div>
+        <div class="forecast-box" id="forecast-2"></div>
+        <div class="forecast-box" id="forecast-3"></div>
+        <div class="forecast-box" id="forecast-4"></div>
+        <div class="forecast-box" id="forecast-5"></div>
+    </div>
+  -->
+    <!-- <form id="form"> -->
+        <!-- <input id="search-bar" placeholder="Search City, Region, Country" type="text"> -->
+        <!-- <span class="error">No matching location found</span> -->
+       
+        <!-- <button id="search-btn">Search</button>
+    </form> -->
 
     <script src="main.js"></script> 
 </body>
