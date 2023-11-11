@@ -1,9 +1,12 @@
 import { getCurrentData } from "./Api-functions";
-import { format } from "date-fns";
+import { format, getDay} from "date-fns";
 let formatDate=function(string){
-    let year=string.split("-")[0];
-    let month=string.split("-")[1];
-    let day=string.split("-")[2];
+    let year=parseInt(string.split("-")[0]);
+    let month=parseInt(string.split("-")[1])-1;
+    let day=parseInt(string.split("-")[2]);
+    let dayOfWeek=getDay(new Date(year, month, day));
+    let formattedDate=format(new Date(year,month,day, dayOfWeek), 'EEE d MMM y');
+    return formattedDate
 
 }
 
@@ -16,7 +19,7 @@ let getcurrentObject=async function(){
             currentObject.region=data.location.region;
             currentObject.country=data.location.country;
             currentObject.timezone=data.location.tz_id;
-            currentObject.date=(data.location.localtime).split(" ")[0];
+            currentObject.date=formatDate((data.location.localtime).split(" ")[0]);
             currentObject.time=(data.location.localtime).split(" ")[1];
             currentObject.tempC=data.current.temp_c;
             currentObject.tempF=data.current.temp_f;
@@ -25,7 +28,7 @@ let getcurrentObject=async function(){
             currentObject.windSpeed=data.current.wind_kph;
             currentObject.feelsLikeC=data.current.feelslike_c;
             currentObject.feelsLikeF=data.current.feelslike_f;
-
+            console.log(currentObject);
 
             return currentObject
         }else{
@@ -39,4 +42,4 @@ let getcurrentObject=async function(){
    
 
 }
-export {getcurrentObject}
+export {getcurrentObject,formatDate}
