@@ -120,6 +120,9 @@ body{
 #city-country{
     font-size:20px;
 }
+#time-zone{
+    margin-bottom:10px;
+}
 img{
     height:64px;
     width: 64px;
@@ -141,11 +144,9 @@ border-radius:10px;
     font-size: 40px;
     font-weight: bold;
 }
-#feels-like{
-    font-size: 18px;;
-}
+
 #sunrise,#sunset{
-    margin-top:20px;
+    margin-top:10px;
     display: flex;
     justify-content: flex-start;
     gap:10px;
@@ -161,30 +162,39 @@ border-radius:10px;
     font-size: 18px;
     align-self: center;
 }
-.side-element{
-    display:flex;
-    align-items: center;
-    gap:10px;
-}
-.side-element img{
-    height:40px;
-    width:40px;
-}
-#forecast{
-    display:flex;
-    position:absolute;
-    border:1px solid white;
-    color:white;
-    bottom:0;
-    height:30%;
-    width:100%;   
-}
-.description-side-element p:nth-child(1){
-    font-size:18px;
-    font-weight:bold;
-}
+
 #feels-like{
     text-align: center;
+}
+#weather-parameters{
+    display:flex;
+    justify-content: space-evenly;
+   
+    padding:10px;
+    background-color: rgba(0, 0, 0, 0.40);
+    border-radius:10px;
+   
+}
+.para-element{
+    display:flex;
+    color:white;
+    gap:10px;
+}
+.para-element p:nth-child(1){
+    font-size:15px;
+}
+.para-description{
+    display:flex;
+    flex-direction: column;;
+    justify-content: space-evenly;
+}
+.para-element img{
+    height:40px;
+    width:40px;
+
+}
+#feels-like,#humidity,#wind-speed,#chance-rain{
+    font-size:25px;
 }
 
 
