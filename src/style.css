@@ -17,7 +17,8 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     margin:0;
-    padding: 0;
+    padding: 50px;
+    gap:10px;
 }
 
 #form{
@@ -60,7 +61,6 @@ body{
     color:white;
 }
 #location-info,#weather-info{
-    padding:50px;
     display:flex;
     flex-direction:column;
    
@@ -68,17 +68,47 @@ body{
 #weather-info{
    align-items: center;
 }
+#top-div{
+    display:flex;
+   align-items: center;
+   justify-content: space-between;
+   
+}
 #date{
     font-size:20px;
-  
-    margin-top:30px;
+    color:white;
+    
+    
+   
 }
 #time{
     font-size:15px;
+    color:white;
+}
+#search-div2{
+    display:flex;
    
-    
+}
+#search-bar2{
+    background-color:transparent;
+    border:none;
+    color:white;
+    border-bottom:1px solid white;
+    padding-left:10px;
+    font-size:18px;
+}
+#search-bar2:focus-visible{
+    outline:none;
+   }
+#search-div2 img{
+    height:30px;
+    width:30px;
 
 }
+#search-div2 img:hover{
+    cursor:pointer;
+}
+
 #city-name{
     font-size: 40px;
     font-weight: bold;
@@ -148,6 +178,13 @@ border-radius:10px;
     bottom:0;
     height:30%;
     width:100%;   
+}
+.description-side-element p:nth-child(1){
+    font-size:18px;
+    font-weight:bold;
+}
+#feels-like{
+    text-align: center;
 }
 
 
