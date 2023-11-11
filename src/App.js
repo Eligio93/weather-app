@@ -13,8 +13,8 @@ let formatDate=function(string){
 let createInfoObject=async function(){
     let infoObject={};
     try{
-        let currentData=await getCurrentData("Milan");
-        let forecastData=await getForecastData("Milan")
+        let currentData=await getCurrentData("Sydney");
+        let forecastData=await getForecastData("Sydney");
         // let astroData=await getAstroData("Milan");
         if(!currentData.error){
             //location infos
@@ -30,7 +30,7 @@ let createInfoObject=async function(){
             infoObject.tempF=Math.round(currentData.current.temp_f)+" °F";
             //weather info
             infoObject.condition=currentData.current.condition.text;
-            infoObject.iconUrl=(currentData.current.condition.icon).substring(2);
+            infoObject.iconUrl="https:"+currentData.current.condition.icon;
             infoObject.windSpeed=currentData.current.wind_kph;
             infoObject.feelsLikeC=Math.round(currentData.current.feelslike_c)+" °C";
             infoObject.feelsLikeF=Math.round(currentData.current.feelslike_f)+" °F";
