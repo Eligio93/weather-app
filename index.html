@@ -7,16 +7,25 @@
     <title>The Weather App</title>
 </head>
 <body>
-    <div id="new-search"></div>
+    <div id="top-div">
+        <div>
+            <p id="date">Mon 22 Jan 2023</p>
+            <p id="time">22:10</p>
+        </div>
        
-    <div id="main">
+        <div id="search-div2">
+            <input type="text" id="search-bar2">
+            <img src="/src/search.svg" alt="">
+        </div>
         
+        
+    </div> 
+
+    <div id="main">        
         <div id="location-info">
             <p id="city-name">London</p>
             <p id="city-region">City of London, Greater London<p>
             <p id="city-country">United Kingdom</p>
-            <p id="date">Mon 22 Jan 2023</p>
-            <p id="time">22:10</p>
             <p id="time-zone">Europe/London</p>
             <div id="sunrise">
                 <img src="/src/sunrise.svg" alt="">
@@ -29,21 +38,46 @@
         </div>
 
         <div id="weather-info">
+       
             <p id="current-condition">Storm</p>
             <img src="//cdn.weatherapi.com/weather/64x64/day/389.png" alt="" srcset="">                
             <p id="temp">35 °C</p>
-            <div class="side-element">
-                <p id="feels-like">Feels like 50°C</p>
-                <img src="/src/feels-like.svg" alt="">
-                
-            </div>
             
             <p id="degrees">C° F°</p>   
         </div>
-     
-       
-     
     </div>
+    <div id="weather-parameters">
+        <div class="para-element">
+            <img src="/src/feels-like.svg" alt="">
+            <div class="para-description">
+                <p>Feels Like</p>
+                <p id="feels-like">50°C</p>
+            </div>
+        </div>
+        <div class="para-element">
+            <img src="/src/humidity.svg" alt="">
+            <div class="para-description">
+                <p>Humidity</p>
+                <p id="humidity">70%</p>
+            </div>
+        </div>
+        <div class="para-element">
+            <img src="/src/wind.svg" alt="">
+            <div class="para-description">
+                <p>Wind Speed</p>
+                <p id="wind-speed">30 km/h</p>
+            </div>
+        </div>
+        <div class="para-element">
+            <img src="/src/rain.svg" alt="">
+            <div class="para-description">
+                <p>Chances of rain</p>
+                <p id="chance-rain">70%</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINOA QUI -->
     <!-- <div id="forecast">
         <div class="forecast-box" id="forecast-1">
             <p class="forecast-day" id="day1">MON</p>
