@@ -1,4 +1,4 @@
-import { getCurrentData } from "./Api-functions";
+import { getAstroData, getCurrentData, getForecastData } from "./Api-functions";
 import { format, getDay} from "date-fns";
 let formatDate=function(string){
     let year=parseInt(string.split("-")[0]);
@@ -10,27 +10,40 @@ let formatDate=function(string){
 
 }
 
-let getcurrentObject=async function(){
-    let currentObject={};
+let createInfoObject=async function(){
+    let infoObject={};
     try{
-        let data=await getCurrentData("Milan");
-        if(!data.error){
-            currentObject.location=data.location.name;
-            currentObject.region=data.location.region;
-            currentObject.country=data.location.country;
-            currentObject.timezone=data.location.tz_id;
-            currentObject.date=formatDate((data.location.localtime).split(" ")[0]);
-            currentObject.time=(data.location.localtime).split(" ")[1];
-            currentObject.tempC=data.current.temp_c;
-            currentObject.tempF=data.current.temp_f;
-            currentObject.condition=data.current.condition.text;
-            currentObject.iconUrl=(data.current.condition.icon).substring(2);
-            currentObject.windSpeed=data.current.wind_kph;
-            currentObject.feelsLikeC=data.current.feelslike_c;
-            currentObject.feelsLikeF=data.current.feelslike_f;
-            console.log(currentObject);
+        let currentData=await getCurrentData("Milan");
+        let forecastData=await getForecastData("Milan")
+        // let astroData=await getAstroData("Milan");
+        if(!currentData.error){
+            //location infos
+            infoObject.location=currentData.location.name;
+            infoObject.region=currentData.location.region;
+            infoObject.country=currentData.location.country;
+            infoObject.timezone=currentData.location.tz_id;
+            //time info
+            infoObject.date=formatDate((currentData.location.localtime).split(" ")[0]);
+            infoObject.time=(currentData.location.localtime).split(" ")[1];
+            //temp info
+            infoObject.tempC=Math.round(currentData.current.temp_c)+" °C";
+            infoObject.tempF=Math.round(currentData.current.temp_f)+" °F";
+            //weather info
+            infoObject.condition=currentData.current.condition.text;
+            infoObject.iconUrl=(currentData.current.condition.icon).substring(2);
+            infoObject.windSpeed=currentData.current.wind_kph;
+            infoObject.feelsLikeC=Math.round(currentData.current.feelslike_c)+" °C";
+            infoObject.feelsLikeF=Math.round(currentData.current.feelslike_f)+" °F";
+            infoObject.humidity=Math.round(currentData.current.humidity)+" %";
+            //sunrise sunset
+            infoObject.sunrise=forecastData.forecast.forecastday[0].astro.sunrise;
+            infoObject.sunset=forecastData.forecast.forecastday[0].astro.sunset;
+            //chances of rain
+            infoObject.chancesOfRain=forecastData.forecast.forecastday[0].day.daily_chance_of_rain + " %";
+            console.log(forecastData);
+            console.log(infoObject);
 
-            return currentObject
+            return infoObject
         }else{
             return "No matching found"
         }
@@ -42,4 +55,4 @@ let getcurrentObject=async function(){
    
 
 }
-export {getcurrentObject,formatDate}
+export {createInfoObject,formatDate}
