@@ -1,4 +1,3 @@
-import { getCurrentData } from "./Api-functions";
 import { createInfoObject } from "./App";
 import sunriseIcon from "./sunrise.svg";
 import sunsetIcon from "./sunset.svg";
@@ -27,9 +26,10 @@ let displayHome= function(){
     document.body.appendChild(form);
 }
 
-let displayInfo= async function(tempUnit){
+let displayInfo= async function(city,tempUnit){
+    document.body.innerHTML="";
         try{
-            let infoObject=await createInfoObject();
+            let infoObject=await createInfoObject(city);
             if(infoObject!=="No matching found"){
                 //display time and date of the searched city
                 let topDiv=document.createElement("div");
@@ -53,6 +53,7 @@ let displayInfo= async function(tempUnit){
                 searchDiv2.appendChild(searchBar2);
                 let searchImg=document.createElement("img");
                 searchImg.src=searchIcon;
+                searchImg.id="search-icon";
                 searchDiv2.appendChild(searchImg);
                 topDiv.appendChild(searchDiv2);
                 let main=document.createElement("div");
