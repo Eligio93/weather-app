@@ -10,11 +10,11 @@ let formatDate = function (string) {
 
 }
 
-let createInfoObject = async function () {
+let createInfoObject = async function (city) {
     let infoObject = {};
     try {
-        let currentData = await getCurrentData("Conversano");
-        let forecastData = await getForecastData("Conversano");
+        let currentData = await getCurrentData(city);
+        let forecastData = await getForecastData(city);
         // let astroData=await getAstroData("Milan");
         if (!currentData.error) {
             //location infos
@@ -40,18 +40,17 @@ let createInfoObject = async function () {
             infoObject.sunset = forecastData.forecast.forecastday[0].astro.sunset;
             //chances of rain
             infoObject.chancesOfRain = forecastData.forecast.forecastday[0].day.daily_chance_of_rain + " %";
-            console.log(forecastData.forecast.forecastday);
+           //forecast
             infoObject.forecast = [];
-
             for (let i = 1; i < forecastData.forecast.forecastday.length; i++) {
                 infoObject.forecast.push({
                     day: (formatDate(forecastData.forecast.forecastday[i].date)).slice(0, 3),
                     conditionText:forecastData.forecast.forecastday[i].day.condition.text,
                     conditionIcon: "https:" + forecastData.forecast.forecastday[i].day.condition.icon,
-                    maxTempC: forecastData.forecast.forecastday[i].day.maxtemp_c + " °C",
-                    maxTempF: forecastData.forecast.forecastday[i].day.maxtemp_f + " °F",
-                    minTempC: forecastData.forecast.forecastday[i].day.mintemp_c + " °C",
-                    minTempF: forecastData.forecast.forecastday[i].day.mintemp_f + " °F"
+                    maxTempC: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_c + " °C"),
+                    maxTempF: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_f + " °F"),
+                    minTempC: Math.round(forecastData.forecast.forecastday[i].day.mintemp_c + " °C"),
+                    minTempF: Math.round(forecastData.forecast.forecastday[i].day.mintemp_f + " °F")
                 });
             }
 
