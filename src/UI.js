@@ -12,6 +12,7 @@ import searchIcon from "./search.svg";
 
 
 let displayHome= function(){
+    document.body.style.padding="0";
     let form=document.createElement("form");
     form.id="form";
     let searchBar=document.createElement("input");
@@ -215,44 +216,9 @@ let displayInfo= async function(city,tempUnit){
                     forecastBox.appendChild(forecastTemp)
                     forecast.appendChild(forecastBox);
                 })
-                document.body.appendChild(forecast)
-
-
-    //             <div id="forecast">
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">TUE</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">WED</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">THU</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">FRI</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">SAT</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    //     <div class="forecast-box">
-    //         <p class="forecast-day">SUN</p>
-    //         <img src="/src/rain.svg" alt="">
-    //         <p class="forecast-temp">25°/ <span>12°</span></p>
-    //     </div>
-    // </div> -->
-                
+                document.body.appendChild(forecast) 
             }else{
-                console.log("No matching found")
+                 return "No matching found";
             }
         }catch(error){
             console.log("Errore: "+ error);
