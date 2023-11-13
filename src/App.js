@@ -31,7 +31,7 @@ let createInfoObject=async function(){
             //weather info
             infoObject.condition=currentData.current.condition.text;
             infoObject.iconUrl="https:"+currentData.current.condition.icon;
-            infoObject.windSpeed=currentData.current.wind_kph;
+            infoObject.windSpeed=Math.round(currentData.current.wind_kph);
             infoObject.feelsLikeC=Math.round(currentData.current.feelslike_c)+" °C";
             infoObject.feelsLikeF=Math.round(currentData.current.feelslike_f)+" °F";
             infoObject.humidity=Math.round(currentData.current.humidity)+" %";
@@ -40,8 +40,8 @@ let createInfoObject=async function(){
             infoObject.sunset=forecastData.forecast.forecastday[0].astro.sunset;
             //chances of rain
             infoObject.chancesOfRain=forecastData.forecast.forecastday[0].day.daily_chance_of_rain + " %";
-            console.log(forecastData);
-            console.log(infoObject);
+            infoObject.forecast=forecastData.forecast.forecastday;
+           
 
             return infoObject
         }else{
