@@ -6,6 +6,7 @@ import feelsLikeIcon from "./feels-like.svg";
 import humidityIcon from "./humidity.svg"
 import windIcon from "./wind.svg"
 import chanceOfRainIcon from "./rain.svg"
+import searchIcon from "./search.svg";
 
 
 
@@ -33,15 +34,27 @@ let displayInfo= async function(tempUnit){
                 //display time and date of the searched city
                 let topDiv=document.createElement("div");
                 topDiv.id="top-div";
+                let div=document.createElement("div");
                 let date=document.createElement("p");
                 date.id="date";
                 date.textContent=infoObject.date;
-                topDiv.appendChild(date);
+                div.appendChild(date);
                 let time=document.createElement("p");
                 time.id="time";
                 time.textContent=infoObject.time;
-                topDiv.appendChild(time);
+                div.appendChild(time);
+                topDiv.appendChild(div),
                 document.body.appendChild(topDiv);
+                let searchDiv2=document.createElement("div");
+                searchDiv2.id="search-div2";
+                let searchBar2=document.createElement("input");
+                searchBar2.type="text";
+                searchBar2.id="search-bar2";
+                searchDiv2.appendChild(searchBar2);
+                let searchImg=document.createElement("img");
+                searchImg.src=searchIcon;
+                searchDiv2.appendChild(searchImg);
+                topDiv.appendChild(searchDiv2);
                 let main=document.createElement("div");
                 main.id="main";
                 //display city info
@@ -171,18 +184,72 @@ let displayInfo= async function(tempUnit){
                 paraDescription4.appendChild(p4Value);
                 paraElement4.appendChild(paraDescription4);
                 weatherParameters.appendChild(paraElement4);
-
-
-
-
-
-
-
-               
                 main.appendChild(locationInfo);
                 main.appendChild(weatherInfo);
                 document.body.appendChild(main);
                 document.body.appendChild(weatherParameters);
+                console.log(infoObject.forecast);
+                let forecast=document.createElement("div");
+                forecast.id="forecast";
+                (infoObject.forecast).forEach(day=>{
+                    let forecastBox=document.createElement("div");
+                    forecastBox.className="forecast-box";
+                    let forecastDay=document.createElement("p");
+                    forecastDay.className="forecast-day";
+                    forecastDay.textContent=day.day;
+                    forecastBox.appendChild(forecastDay);
+                    let conditionText=document.createElement("p");
+                    conditionText.className="condition-text";
+                    conditionText.textContent=day.conditionText;
+                    forecastBox.appendChild(conditionText);
+                    let forecastIcon=document.createElement("img");
+                    forecastIcon.src=day.conditionIcon;
+                    forecastBox.appendChild(forecastIcon);
+                    let forecastTemp=document.createElement("p");
+                    forecastTemp.className="forecast-temp";
+                    forecastTemp.textContent=day["maxTemp"+tempUnit]+"/";;
+                    let span=document.createElement("span");
+                    span.textContent=day["minTemp"+tempUnit];
+                    forecastTemp.appendChild(span);
+                    forecastBox.appendChild(forecastTemp)
+                    forecast.appendChild(forecastBox);
+                })
+                document.body.appendChild(forecast)
+
+
+    //             <div id="forecast">
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">TUE</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">WED</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">THU</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">FRI</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">SAT</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    //     <div class="forecast-box">
+    //         <p class="forecast-day">SUN</p>
+    //         <img src="/src/rain.svg" alt="">
+    //         <p class="forecast-temp">25°/ <span>12°</span></p>
+    //     </div>
+    // </div> -->
+                
             }else{
                 console.log("No matching found")
             }
