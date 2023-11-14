@@ -7,6 +7,7 @@ import windIcon from "./wind.svg"
 import chanceOfRainIcon from "./rain.svg"
 import searchIcon from "./search.svg";
 import { loadingSpinner } from "./App";
+import "./style.css";
 
 
 
