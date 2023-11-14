@@ -69,11 +69,11 @@ body {
     font-weight: 200;
 }
 
-#search-bar:focus-visible {
+#search-bar:focus-visible , #switch-unit:focus-visible{
     outline: none;
 }
 
-#search-btn {
+#search-btn, #switch-unit{
     width: fit-content;
     font-size:20px;
     background-color:#004384;
@@ -84,10 +84,13 @@ body {
     padding:5px;
 
 }
-#search-btn:hover{
+#search-btn:hover, #switch-unit:hover{
     cursor:pointer;
     background-color: white;
     color:#004384;
+}
+#switch-unit{
+    font-size:15px;
 }
 
 #main {
