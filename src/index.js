@@ -1,4 +1,5 @@
 import { displayInfo, displayHome } from "./UI";
+import './style.css'
 
 displayHome();
 let searchBtn = document.getElementById("search-btn");
