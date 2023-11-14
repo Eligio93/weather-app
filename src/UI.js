@@ -1,4 +1,5 @@
-import { createInfoObject } from "./App";
+import { createInfoObject} from "./App";
+
 import sunriseIcon from "./sunrise.svg";
 import sunsetIcon from "./sunset.svg";
 import feelsLikeIcon from "./feels-like.svg";
@@ -12,7 +13,6 @@ import searchIcon from "./search.svg";
 
 
 let displayHome= function(){
-    document.body.style.padding="0";
     let form=document.createElement("form");
     form.id="form";
     let searchBar=document.createElement("input");
@@ -28,10 +28,12 @@ let displayHome= function(){
 }
 
 let displayInfo= async function(city,tempUnit){
-    document.body.innerHTML="";
+   
         try{
             let infoObject=await createInfoObject(city);
             if(infoObject!=="No matching found"){
+                document.body.innerHTML="";
+                document.body.style.padding="10px 50px";
                 //display time and date of the searched city
                 let topDiv=document.createElement("div");
                 topDiv.id="top-div";
@@ -57,6 +59,15 @@ let displayInfo= async function(city,tempUnit){
                 searchImg.id="search-icon";
                 searchDiv2.appendChild(searchImg);
                 topDiv.appendChild(searchDiv2);
+                searchImg.addEventListener("click",function(){
+                    let newCity=searchBar2.value;
+                    tempUnit="C";
+                    if(document.getElementById("error-message")){
+                        document.getElementById("error-message").remove();
+
+                    }
+                    displayInfo(newCity,tempUnit)
+                })
                 let main=document.createElement("div");
                 main.id="main";
                 //display city info
@@ -115,6 +126,25 @@ let displayInfo= async function(city,tempUnit){
                 temperature.id="temp";
                 temperature.textContent=infoObject["temp"+tempUnit];
                 weatherInfo.appendChild(temperature);
+                //temperature unit button
+                let switchUnit=document.createElement("button");
+                switchUnit.id="switch-unit";
+                if(tempUnit=="C"){
+                    switchUnit.textContent="Display in °F";
+                }else{
+                    switchUnit.textContent="Display in °C";
+                }
+                weatherInfo.appendChild(switchUnit);
+                //handle click of the switch temperature unit
+                switchUnit.addEventListener("click",function(){
+                    if(tempUnit=="C"){
+                        tempUnit="F";
+                        displayInfo(city,tempUnit)
+                    }else{
+                        tempUnit="C";
+                        displayInfo(city,tempUnit)
+                    }
+                })
                 //weather parameters
                 //feels like
                 let weatherParameters=document.createElement("div");
@@ -218,7 +248,27 @@ let displayInfo= async function(city,tempUnit){
                 })
                 document.body.appendChild(forecast) 
             }else{
-                 return "No matching found";
+                console.log("No matching found");
+                if(document.getElementById("search-bar")){
+                    let errorMessage=document.createElement("p")
+                    errorMessage.textContent="No matching location found";
+                    errorMessage.style.color="white";
+                    document.getElementById("search-bar").insertAdjacentElement("afterend",errorMessage);
+                    document.getElementById("search-bar").value="";   
+                }else{
+                    if(document.getElementById("search-bar2")){
+                        let errorMessage=document.createElement("p");
+                        errorMessage.id="error-message";
+                        errorMessage.textContent="No matching location found";
+                        errorMessage.style.color="white";
+                        errorMessage.style.alignSelf="self-end";
+                        document.getElementById("top-div").insertAdjacentElement("afterend",errorMessage);
+                        document.getElementById("search-bar2");
+                      
+
+                    }
+                }
+                //  return "No matching found";
             }
         }catch(error){
             console.log("Errore: "+ error);
@@ -226,7 +276,7 @@ let displayInfo= async function(city,tempUnit){
 
 
 }
-    //preleva la city nell'input
+
 
 
 
