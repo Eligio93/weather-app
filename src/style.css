@@ -20,8 +20,25 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    padding: 50px;
+    padding: 0;
     gap: 10px;
+}
+#loading{
+    position:absolute;
+    height: 100%;
+    width:100vw;
+    z-index: 1;
+    padding:0;
+    margin:0;
+    background-color: rgba(0, 0, 0, 0.40);
+    color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    
+   
 }
 
 #form {
@@ -29,7 +46,7 @@ body {
     flex-direction: column;
     justify-content: center;
     width: 30%;
-    background-color: rgba(10, 10, 39, 0.59);
+    background-color:rgba(0, 0, 0, 0.40);
     height: 100%;
     padding: 20px;
 
@@ -44,10 +61,12 @@ body {
     border-bottom: 1px solid white;
     padding: 5px 0;
     font-size: 20px;
+    font-weight:bold;
 }
 
 #search-bar::placeholder {
-    color: grey;
+    color: rgba(255, 255, 255, 0.774);
+    font-weight: 200;
 }
 
 #search-bar:focus-visible {
@@ -56,9 +75,19 @@ body {
 
 #search-btn {
     width: fit-content;
-    font-size: 1.2em;
+    font-size:20px;
+    background-color:#004384;
+    color:white;
+    border:1px solid white;
+    border-radius:5px;
     margin-top: 20px;
+    padding:5px;
 
+}
+#search-btn:hover{
+    cursor:pointer;
+    background-color: white;
+    color:#004384;
 }
 
 #main {
@@ -90,9 +119,6 @@ body {
 #date {
     font-size: 20px;
     color: white;
-
-
-
 }
 
 #time {
@@ -152,13 +178,7 @@ img {
     align-self: center;
 }
 
-.error {
-    background: rgba(4, 3, 83, 0.5);
-    font-size: 20px;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-}
+
 
 #current-condition {
     font-size: 40px;
@@ -246,7 +266,7 @@ img {
 .forecast-box {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+
     align-items: center;
 }
 
