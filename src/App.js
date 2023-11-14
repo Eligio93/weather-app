@@ -1,6 +1,7 @@
 import { getCurrentData, getForecastData } from "./Api-functions";
 import { format, getDay } from "date-fns";
 import spinnerGif from "./spinner.svg"
+import "./style.css";
 
 let formatDate = function (string) {
     let year = parseInt(string.split("-")[0]);
