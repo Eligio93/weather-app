@@ -1,5 +1,7 @@
-import { getAstroData, getCurrentData, getForecastData } from "./Api-functions";
+import { getCurrentData, getForecastData } from "./Api-functions";
 import { format, getDay } from "date-fns";
+import spinnerGif from "./spinner.svg"
+
 let formatDate = function (string) {
     let year = parseInt(string.split("-")[0]);
     let month = parseInt(string.split("-")[1]) - 1;
@@ -47,10 +49,10 @@ let createInfoObject = async function (city) {
                     day: (formatDate(forecastData.forecast.forecastday[i].date)).slice(0, 3),
                     conditionText:forecastData.forecast.forecastday[i].day.condition.text,
                     conditionIcon: "https:" + forecastData.forecast.forecastday[i].day.condition.icon,
-                    maxTempC: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_c + " °C"),
-                    maxTempF: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_f + " °F"),
-                    minTempC: Math.round(forecastData.forecast.forecastday[i].day.mintemp_c + " °C"),
-                    minTempF: Math.round(forecastData.forecast.forecastday[i].day.mintemp_f + " °F")
+                    maxTempC: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_c) + " °C",
+                    maxTempF: Math.round(forecastData.forecast.forecastday[i].day.maxtemp_f) + " °F",
+                    minTempC: Math.round(forecastData.forecast.forecastday[i].day.mintemp_c) + " °C",
+                    minTempF: Math.round(forecastData.forecast.forecastday[i].day.mintemp_f) + " °F"
                 });
             }
 
@@ -66,4 +68,21 @@ let createInfoObject = async function (city) {
 
 
 }
-export { createInfoObject, formatDate }
+let loadingSpinner=function(){
+    let loadingDiv=document.createElement("div");
+    loadingDiv.id="loading";
+    let loadingGif=document.createElement("img");
+    loadingGif.src=spinnerGif;
+    loadingDiv.appendChild(loadingGif);
+    let loadingP=document.createElement("p");
+    loadingP.textContent="Loading...";
+    loadingDiv.appendChild(loadingP);
+    document.body.style.padding="0";    
+    document.body.appendChild(loadingDiv);
+}
+   
+
+
+
+
+export { createInfoObject, formatDate,loadingSpinner}
