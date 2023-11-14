@@ -1,5 +1,4 @@
 import { createInfoObject} from "./App";
-
 import sunriseIcon from "./sunrise.svg";
 import sunsetIcon from "./sunset.svg";
 import feelsLikeIcon from "./feels-like.svg";
@@ -7,6 +6,7 @@ import humidityIcon from "./humidity.svg"
 import windIcon from "./wind.svg"
 import chanceOfRainIcon from "./rain.svg"
 import searchIcon from "./search.svg";
+import { loadingSpinner } from "./App";
 
 
 
@@ -30,9 +30,11 @@ let displayHome= function(){
 let displayInfo= async function(city,tempUnit){
    
         try{
+            loadingSpinner();
             let infoObject=await createInfoObject(city);
             if(infoObject!=="No matching found"){
-                document.body.innerHTML="";
+                document.getElementById("loading").remove();
+                document.body.innerHTML="";               
                 document.body.style.padding="10px 50px";
                 //display time and date of the searched city
                 let topDiv=document.createElement("div");
@@ -248,7 +250,7 @@ let displayInfo= async function(city,tempUnit){
                 })
                 document.body.appendChild(forecast) 
             }else{
-                console.log("No matching found");
+                document.getElementById("loading").remove();              
                 if(document.getElementById("search-bar")){
                     let errorMessage=document.createElement("p")
                     errorMessage.textContent="No matching location found";
@@ -257,6 +259,7 @@ let displayInfo= async function(city,tempUnit){
                     document.getElementById("search-bar").value="";   
                 }else{
                     if(document.getElementById("search-bar2")){
+                        document.body.style.padding="10px 50px";
                         let errorMessage=document.createElement("p");
                         errorMessage.id="error-message";
                         errorMessage.textContent="No matching location found";
