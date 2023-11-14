@@ -16,11 +16,4 @@ let getForecastData=async function(city){
     return forecastData
 
 }
-
-let getAstroData=async function(city,date){
-    let api="45e67828ff3b497ebb033714230111";
-    let response=fetch('http://api.weatherapi.com/v1/astronomy.json?key='+api+'&q='+city+'&dt='+date,{mode:'cors'});
-    let astroData=await response.json();
-    return astroData
-}
-export {getCurrentData, getForecastData, getAstroData};
+export {getCurrentData, getForecastData};
