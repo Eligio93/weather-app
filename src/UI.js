@@ -111,7 +111,7 @@ let displayInfo= async function(city,tempUnit){
                 sunset.appendChild(sunsetImg);
                 let sunsetTime=document.createElement("p");
                 sunsetTime.id="sunset-time";
-                sunsetTime.textContent="Sun rises at: "+infoObject.sunset;
+                sunsetTime.textContent="Sun sets at: "+infoObject.sunset;
                 sunset.appendChild(sunsetTime);
                 locationInfo.appendChild(sunset);
                 //weather info
