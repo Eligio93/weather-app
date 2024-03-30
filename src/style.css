@@ -291,3 +291,51 @@ img {
 .forecast-temp span {
     font-size: 15px;
 }
+
+/*media queries*/
+@media screen and (max-width:640px){
+    *{
+        width:100%;
+    }
+    body{
+        height:100%;
+        width:100vw;
+    }
+    #form{
+        width:100%;
+    }
+    #top-div{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #main{
+        flex-direction: column;
+    }
+    #city-region,#city-country,#time-zone{
+        display:none;
+    }
+    #weather-info{
+        align-items: flex-start;
+    }
+    #current-condition{
+        align-self: stretch;
+    }
+    #weather-info img{
+        align-self: stretch;
+    }
+    #weather-parameters{
+        flex-direction: column;
+        width:fit-content
+    }
+    #forecast{
+        width:fit-content;
+        flex-direction: column;
+        gap:20px;
+        align-items: flex-start;
+    }
+    .forecast-box{
+        width:100%;
+        align-items: flex-start;
+    }
+    .forecast-temp{align-self: center;}
+}
